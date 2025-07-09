@@ -24,7 +24,7 @@ export const routes: Routes = [
       .then(m => m.PrivateLayout),
   },
   {
-    path: '*/**',
+    path: '**',
     redirectTo: '',
   },
 ];

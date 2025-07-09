@@ -1,1 +1,31 @@
-<p>loggin works!</p>
+<h1>Connexion</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+  <label for="email">Email</label>
+  <input type="email" id="email" formControlName="email" />
+
+  @if (form.get('email')?.invalid && form.get('email')?.touched) {
+    <p class="error">Email invalide</p>
+  }
+  </div>
+
+  <div>
+
+  <label for="password">Mot de passe</label>
+  <input type="password" id="password" formControlName="password" />
+  @if (form.get('password')?.invalid && form.get('password')?.touched) {
+    <p class="error">Mot de passe requis</p>
+  }
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Se connecter</button>
+</form>
+
+<hr />
+
+@if (user$ | async; as user) {
+  <p>Connecté en tant que : {{ user.email }}</p>
+} @else {
+  <p>Non connecté</p>
+}
